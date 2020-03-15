@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xbel version="1.0"
+      xmlns:bookmark="http://www.freedesktop.org/standards/desktop-bookmarks"
+      xmlns:mime="http://www.freedesktop.org/standards/shared-mime-info"
+>
+  <bookmark href="nfs://server:0/srv/nfs/shared" added="2020-01-26T12:48:10Z" modified="2020-01-27T22:29:27Z" visited="2020-01-27T22:29:27Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <bookmark:applications>
+          <bookmark:application name="org.gnome.Nautilus" exec="&apos;org.gnome.Nautilus %u&apos;" modified="2020-01-27T22:29:27Z" count="5"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="sftp://server/" added="2020-03-11T11:16:24Z" modified="2020-03-11T12:58:29Z" visited="2020-03-11T12:58:29Z">
+    <title>/ on server</title>
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <bookmark:applications>
+          <bookmark:application name="org.gnome.Nautilus" exec="&apos;org.gnome.Nautilus %u&apos;" modified="2020-03-11T12:58:29Z" count="3"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="sftp://downloads.crstian.me:44444/" added="2020-03-13T23:34:36Z" modified="2020-03-15T15:45:49Z" visited="2020-03-15T15:45:49Z">
+    <title>/ on downloads.crstian.me</title>
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <bookmark:applications>
+          <bookmark:application name="org.gnome.Nautilus" exec="&apos;org.gnome.Nautilus %u&apos;" modified="2020-03-15T15:45:49Z" count="2"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+</xbel>

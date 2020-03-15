@@ -1,0 +1,90 @@
+{
+    "layer": "top", 
+    "position": "bottom",
+    "height": 20, 
+    "modules-left": [ "disk", "memory", "cpu", "sway/mode", "temperature#cpu", "temperature#gpu" ],
+    "modules-center": ["sway/workspaces"],
+    "modules-right": [ "pulseaudio", "network", "clock", "tray" ],
+
+     "sway/workspaces": {
+         "disable-scroll": false,
+         "all-outputs": true,
+         "format": "{icon}",
+         "format-icons": {
+             "1: 1": "",
+             "2: 2": "",
+             "3: 3": "",
+             "4: 4": "",
+             "5: 5": "",
+             "urgent": "",
+             "focused": "",
+             "default": ""
+         }
+     },
+    
+    "tray": {
+        "icon-size": 22,
+        "spacing": 5
+    },
+    "clock": {
+	"format": " {:%a %d %b %H:%M}"
+    },
+    "cpu": {
+        "interval": 1,
+        "format": " {usage}%"
+    },
+    "memory": {
+        "format": " {used:0.1f}G/{total:0.1f}G {}%"
+    },
+    
+    "network": {
+        "interval": 1,
+        "format-wifi": " {essid} {ipaddr}",
+        "format-ethernet": " {bandwidthUpBits}  {bandwidthDownBits}  {ipaddr}/{cidr}",
+        "format-disconnected": "Disconnected ⚠"
+    },
+
+     "disk": {
+       "interval": 30,
+       "format": " {free} {percentage_used}%",
+       "path": "/"
+    },
+    "pulseaudio": {
+        "scroll-step": 5,
+        "format": "{icon} {volume}%",
+        "format-bluetooth": "{volume}% {icon}",
+        "format-muted": " Muted",
+        "format-icons": {
+            "headphones": "",
+            "handsfree": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", ""]
+        },
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+    },
+
+    "temperature#cpu": {
+	"hwmon-path": "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon1/temp1_input",
+	"critical-threshold": 80,
+    "format-critical": "CPU  {temperatureC}°C",
+	"format": "CPU  {temperatureC}°C"
+    },
+
+    "temperature#gpu": {
+	"hwmon-path": "/sys/devices/pci0000:00/0000:00:03.1/0000:06:00.0/hwmon/hwmon2/temp1_input",
+	"critical-threshold": 80,
+    "format-critical": "GPU  {temperatureC}°C",
+	"format": "GPU  {temperatureC}°C"
+    },
+
+
+    "custom/storage#root": {
+        "format": " / {}",
+        "interval": 60,
+        "exec": "df -h --output=avail / | tail -1 | sed 's/ //g'"
+    }
+
+}
