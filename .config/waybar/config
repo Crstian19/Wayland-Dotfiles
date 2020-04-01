@@ -4,7 +4,7 @@
     "height": 20, 
     "modules-left": [ "disk", "memory", "cpu", "sway/mode", "temperature#cpu", "temperature#gpu" ],
     "modules-center": ["sway/workspaces"],
-    "modules-right": [ "pulseaudio", "network", "clock", "tray" ],
+    "modules-right": [ "custom/mediaplayer", "custom/airquality", "custom/ping", "pulseaudio", "network", "clock", "tray" ],
 
      "sway/workspaces": {
          "disable-scroll": false,
@@ -12,8 +12,8 @@
          "format": "{icon}",
          "format-icons": {
              "1: 1": "",
-             "2: 2": "",
-             "3: 3": "",
+             "2: 2": "",
+             "3: 3": "",
              "4: 4": "",
              "5: 5": "",
              "urgent": "",
@@ -67,24 +67,46 @@
     },
 
     "temperature#cpu": {
-	"hwmon-path": "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon1/temp1_input",
+	"hwmon-path": "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon0/temp1_input",
 	"critical-threshold": 80,
     "format-critical": "CPU  {temperatureC}°C",
 	"format": "CPU  {temperatureC}°C"
     },
 
     "temperature#gpu": {
-	"hwmon-path": "/sys/devices/pci0000:00/0000:00:03.1/0000:06:00.0/hwmon/hwmon2/temp1_input",
+	"hwmon-path-abs": "/sys/class/drm/card0/device/hwmon",
 	"critical-threshold": 80,
+    "input-filename": "temp1_input",
     "format-critical": "GPU  {temperatureC}°C",
 	"format": "GPU  {temperatureC}°C"
     },
+     "custom/mediaplayer": {
+        "format": "{}",
+        "max-length": 40,
+        "exec": "~/.config/waybar/scripts/mediaplayer.sh",
+        "escape": true,
+        "on-click": "playerctl play-pause",
+        "on-click-middle": "playerctl previous",
+        "on-click-right": "playerctl next",
+        "interval": 5
+    },
+
+    "custom/ping": {
+        "format": "{}",
+        "max-length": 40,
+        "exec": "~/.config/waybar/scripts/info-pingrtt.sh",
+        "interval": 5,
+        "escape": true
+    },
+    "custom/airquality": {
+        "format": "{}",
+        "max-length": 40,
+        "exec": "~/.config/waybar/scripts/info-airqualityindex.sh",
+        "interval": 5,
+        "escape": true
 
 
-    "custom/storage#root": {
-        "format": " / {}",
-        "interval": 60,
-        "exec": "df -h --output=avail / | tail -1 | sed 's/ //g'"
+   
     }
 
 }
