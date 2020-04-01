@@ -8,7 +8,7 @@ API="https://api.waqi.info/feed"
 if [ -n "$CITY" ]; then
     aqi=$(curl -sf "$API/$CITY/?token=$TOKEN")
 else
-    location=$(curl -sf https://location.services.mozilla.com/v1/geolocate?key=geoclue)
+    location=$(curl -sf "https://location.services.mozilla.com/v1/geolocate?key=geoclue")
 
     if [ -n "$location" ]; then
         location_lat="$(echo "$location" | jq '.location.lat')"
@@ -23,17 +23,17 @@ if [ -n "$aqi" ]; then
         aqi=$(echo "$aqi" | jq '.data.aqi')
 
         if [ "$aqi" -lt 50 ]; then
-            echo "%{F#009966}%{F-} $aqi"
+            echo " $aqi"
         elif [ "$aqi" -lt 100 ]; then
-            echo "%{F#ffde33}%{F-} $aqi"
+            echo "北 $aqi"
         elif [ "$aqi" -lt 150 ]; then
-            echo "%{F#ff9933}%{F-} $aqi"
+            echo "北 $aqi"
         elif [ "$aqi" -lt 200 ]; then
-            echo "%{F#cc0033}%{F-} $aqi"
+            echo " $aqi"
         elif [ "$aqi" -lt 300 ]; then
-            echo "%{F#660099}%{F-} $aqi"
+            echo " $aqi"
         else
-            echo "%{F#7e0023}%{F-} $aqi"
+            echo " $aqi"
         fi
     else
         echo "$aqi" | jq -r '.data'
