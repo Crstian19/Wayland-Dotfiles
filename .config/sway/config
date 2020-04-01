@@ -74,7 +74,8 @@ bindsym $mod+Shift+4 move container to workspace $ws4
 bindsym $mod+Shift+5 move container to workspace $ws5
 
 # Wallpapers
-output "*" background ~/Pictures/Wallhaven/wallhaven-eyp3ro_2560x1440.png fill
+set $wallpapers ~/Pictures/Wallhaven/
+output "*" bg `find $wallpapers -type f | shuf -n 1` fill
 
 set $gnome-schema org.gnome.desktop.interface
 exec_always {
@@ -91,3 +92,5 @@ bar {
 exec mako
 
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id /usr/local/bin/alternating_layouts.py
+exec /usr/local/bin/rice.py
