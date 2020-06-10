@@ -12,22 +12,53 @@
       </metadata>
     </info>
   </bookmark>
-  <bookmark href="sftp://server/" added="2020-03-11T11:16:24Z" modified="2020-03-11T12:58:29Z" visited="2020-03-11T12:58:29Z">
+  <bookmark href="sftp://server/" added="2020-03-11T11:16:24Z" modified="2020-05-31T22:25:07Z" visited="2020-05-31T22:25:07Z">
     <title>/ on server</title>
     <info>
       <metadata owner="http://freedesktop.org">
         <bookmark:applications>
-          <bookmark:application name="org.gnome.Nautilus" exec="&apos;org.gnome.Nautilus %u&apos;" modified="2020-03-11T12:58:29Z" count="3"/>
+          <bookmark:application name="org.gnome.Nautilus" exec="&apos;org.gnome.Nautilus %u&apos;" modified="2020-05-31T22:25:07Z" count="13"/>
+          <bookmark:application name="Celluloid" exec="&apos;io.github.celluloid_player.Celluloid %u&apos;" modified="2020-05-19T15:14:16Z" count="1"/>
         </bookmark:applications>
       </metadata>
     </info>
   </bookmark>
-  <bookmark href="sftp://downloads.crstian.me:44444/" added="2020-03-13T23:34:36Z" modified="2020-03-15T15:45:49Z" visited="2020-03-15T15:45:49Z">
+  <bookmark href="sftp://downloads.crstian.me:44444/" added="2020-03-13T23:34:36Z" modified="2020-03-17T01:13:26Z" visited="2020-03-17T01:13:26Z">
     <title>/ on downloads.crstian.me</title>
     <info>
       <metadata owner="http://freedesktop.org">
         <bookmark:applications>
-          <bookmark:application name="org.gnome.Nautilus" exec="&apos;org.gnome.Nautilus %u&apos;" modified="2020-03-15T15:45:49Z" count="2"/>
+          <bookmark:application name="org.gnome.Nautilus" exec="&apos;org.gnome.Nautilus %u&apos;" modified="2020-03-17T01:13:26Z" count="5"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="davs://cloud.fosc.space/remote.php/dav/files/cristian" added="2020-04-04T17:56:42Z" modified="2020-04-04T18:06:37Z" visited="2020-04-04T18:06:37Z">
+    <title>cristian</title>
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <bookmark:applications>
+          <bookmark:application name="org.gnome.Nautilus" exec="&apos;org.gnome.Nautilus %u&apos;" modified="2020-04-04T18:06:37Z" count="3"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="sftp://server.lan/" added="2020-04-19T22:26:27Z" modified="2020-06-06T00:26:10Z" visited="2020-06-06T00:26:10Z">
+    <title>/ on server.lan</title>
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <bookmark:applications>
+          <bookmark:application name="org.gnome.Nautilus" exec="&apos;org.gnome.Nautilus %u&apos;" modified="2020-06-06T00:26:10Z" count="5"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="sftp://192.168.1.141/" added="2020-04-24T14:59:51Z" modified="2020-04-24T18:41:34Z" visited="2020-04-24T18:41:34Z">
+    <title>/ on 192.168.1.141</title>
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <bookmark:applications>
+          <bookmark:application name="org.gnome.Nautilus" exec="&apos;org.gnome.Nautilus %u&apos;" modified="2020-04-24T18:41:34Z" count="10"/>
         </bookmark:applications>
       </metadata>
     </info>
