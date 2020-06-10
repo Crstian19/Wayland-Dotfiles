@@ -92,5 +92,6 @@ bar {
 exec mako
 
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id /usr/local/bin/alternating_layouts.py
+# exec --no-startup-id /usr/local/bin/alternating_layouts.py
 exec /usr/local/bin/rice.py
+exec autotiling

@@ -4,7 +4,7 @@
     "height": 20, 
     "modules-left": [ "disk", "memory", "cpu", "sway/mode", "temperature#cpu", "temperature#gpu" ],
     "modules-center": ["sway/workspaces"],
-    "modules-right": [ "custom/mediaplayer", "custom/airquality", "custom/ping", "pulseaudio", "network", "clock", "tray" ],
+    "modules-right": [ "custom/hack","custom/mediaplayer", "custom/airquality", "custom/ping", "pulseaudio", "network", "clock", "tray" ],
 
      "sway/workspaces": {
          "disable-scroll": false,
@@ -107,6 +107,21 @@
 
 
    
-    }
+    },
 
+       "custom/hack": {
+        "format": "{}",
+        "max-length": 40,
+        "exec": "~/.config/waybar/scripts/hack.sh",
+        "interval": 5,
+        "escape": true
+    },
+    "custom/vpn":{
+    "format": "{icon}",
+    "tooltip-format": "{icon}",
+    "exec": "~/.config/waybar/scripts/hackthebox.sh",
+    "return-type": "json",
+    "interval": 5,
+    "format-icons": ["",""]
+ } 
 }
