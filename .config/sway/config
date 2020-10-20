@@ -15,9 +15,10 @@ input * xkb_variant "intl"
 bindsym $mod+Escape exit
 bindsym $mod+Return exec alacritty
 bindsym $mod+d exec nautilus -w
-bindsym $mod+Space exec wofi
+bindsym $mod+Space exec rofi -show drun
 bindsym $mod+l exec swaylock -c 000000
 bindsym --release Print exec grim -g \"$(slurp)" - | wl-copy
+# bindsym Print exec maim -s --hidecursor | xclip -selection clipboard -t image/png
 
 # Media
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
@@ -29,6 +30,7 @@ bindsym XF86Mail exec playerctl next
 bindsym XF86HomePage exec playerctl previous
 bindsym XF86MonBrightnessUp   exec xbacklight -inc 5
 bindsym XF86MonBrightnessDown exec xbacklight -dec 5
+
 
 # WM stuff
 bindsym $mod+Tab workspace back_and_forth
