@@ -10,8 +10,8 @@ else
     if [ "$rtt" -lt 50 ]; then
         text=""
     elif [ "$rtt" -lt 150 ]; then
-        text=""
-        text=""
+        text="""
+        text="""
     fi
 
     echo "$text $rtt ms"

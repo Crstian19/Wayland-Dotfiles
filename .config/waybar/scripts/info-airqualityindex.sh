@@ -1,7 +1,7 @@
 #!/bin/sh
 
 TOKEN="eede2aac49a4b420091a181c837a32f7609022dc"
-CITY="Cartagena"
+CITY=""
 
 API="https://api.waqi.info/feed"
 

@@ -17,9 +17,9 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+d exec nautilus -w
 bindsym $mod+Space exec rofi -show drun
 bindsym $mod+l exec swaylock -c 000000
-bindsym --release Print exec grim -g \"$(slurp)" - | wl-copy
+# bindsym --release Print exec grim -g \"$(slurp)" - | wl-copy
 # bindsym Print exec maim -s --hidecursor | xclip -selection clipboard -t image/png
-
+bindsym --release Print exec grim -g "$(slurp)" - | swappy -f -
 # Media
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%

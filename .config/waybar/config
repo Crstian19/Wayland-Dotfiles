@@ -2,9 +2,9 @@
     "layer": "top", 
     "position": "bottom",
     "height": 20, 
-    "modules-left": [ "disk", "memory", "cpu", "sway/mode", "temperature#cpu", "temperature#gpu" ],
+    "modules-left": [ "disk", "memory", "cpu", "sway/mode", "temperature#cpu", "temperature#gpu", "temperature#nvme" ],
     "modules-center": ["sway/workspaces"],
-    "modules-right": [ "custom/hack","custom/mediaplayer", "custom/airquality", "custom/ping", "pulseaudio", "network", "clock", "tray" ],
+    "modules-right": [ "custom/crypto","custom/mediaplayer","custom/weather", "custom/ping", "pulseaudio", "network", "clock", "tray" ],
 
      "sway/workspaces": {
          "disable-scroll": false,
@@ -67,19 +67,29 @@
     },
 
     "temperature#cpu": {
-	"hwmon-path": "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon0/temp1_input",
+	"hwmon-path-abs": "/sys/devices/platform/nct6775.656/hwmon/",
 	"critical-threshold": 80,
-    "format-critical": "CPU  {temperatureC}°C",
+	"input-filename": "temp2_input",
+        "format-critical": "CPU  {temperatureC}°C",
 	"format": "CPU  {temperatureC}°C"
     },
 
     "temperature#gpu": {
 	"hwmon-path-abs": "/sys/class/drm/card0/device/hwmon",
-	"critical-threshold": 80,
-    "input-filename": "temp1_input",
-    "format-critical": "GPU  {temperatureC}°C",
+        "critical-threshold": 80,
+        "input-filename": "temp1_input",
+        "format-critical": "GPU  {temperatureC}°C",
 	"format": "GPU  {temperatureC}°C"
     },
+
+     "temperature#nvme": {
+        "hwmon-path-abs": "/sys/class/nvme/nvme0/device/hwmon/",
+        "input-filename": "temp1_input",
+        "critical-threshold": 80,
+    "format-critical": "NVME  {temperatureC}°C",
+        "format": "NVME  {temperatureC}°C"
+    },
+
      "custom/mediaplayer": {
         "format": "{}",
         "max-length": 40,
@@ -104,9 +114,20 @@
         "exec": "~/.config/waybar/scripts/info-airqualityindex.sh",
         "interval": 5,
         "escape": true
-
-
-   
+    },
+    "custom/weather": {
+        "format": "{}",
+        "tooltip": true,
+        "exec": "~/.config/waybar/scripts/waybar-wttr.py",
+        "interval": 3600,
+        "return-type": "json"
+    },
+    "custom/crypto": {
+    "format": "{}",
+    "interval": 600,
+    "return-type": "json",
+    "exec": "~/.config/waybar/scripts/crypto.py",
+    "exec-if": "ping pro-api.coinmarketcap.com -c1"
     },
 
        "custom/hack": {
