@@ -41,7 +41,6 @@ window#waybar {
     color: #d92626;
 }
 
-
 @keyframes rainbow {
     0% {color: #d92626;}
     10% {color: #d98026;}

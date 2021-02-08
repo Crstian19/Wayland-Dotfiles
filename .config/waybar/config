@@ -2,9 +2,9 @@
     "layer": "top", 
     "position": "bottom",
     "height": 20, 
-    "modules-left": [ "disk", "memory", "cpu", "sway/mode", "temperature#cpu", "temperature#gpu", "temperature#nvme" ],
+    "modules-left": [ "disk", "memory", "cpu", "custom/cpu", "sway/mode", "temperature#cpu", "temperature#gpu", "temperature#nvme", "custom/paru" ],
     "modules-center": ["sway/workspaces"],
-    "modules-right": [ "custom/crypto","custom/mediaplayer","custom/weather", "custom/ping", "pulseaudio", "network", "clock", "tray" ],
+    "modules-right": [ "custom/crypto","custom/media","custom/weather", "custom/ping", "pulseaudio", "network", "clock", "tray" ],
 
      "sway/workspaces": {
          "disable-scroll": false,
@@ -100,6 +100,29 @@
         "on-click-right": "playerctl next",
         "interval": 5
     },
+     "custom/paru": {
+        "format": " {}",
+        "interval": 3600,                     
+        "exec": "paru -Qu | wc -l",
+        "exec-if": "exit 0",
+        "on-click": "alacritty -e 'paru'; pkill -SIGRTMIN+8 waybar",
+        "signal": 8
+    },
+
+        "custom/media": {
+        "format": "<span color=\"#1DB954\">{icon}</span> {}",
+        "return-type": "json",
+        "max-length": 50,
+        "format-icons": {
+            "spotify": "",
+            "default": "🎜"
+        },
+        "escape": true,
+        "on-click-middle": "playerctl -p spotify play-pause",
+        "on-click": "playerctl -p spotify previous",
+        "on-click-right": "playerctl -p spotify next",
+         "exec": "$HOME/.config/waybar/scripts/mediaplayer.py --player spotify 2> /dev/null"
+    },
 
     "custom/ping": {
         "format": "{}",
@@ -130,6 +153,15 @@
     "exec-if": "ping pro-api.coinmarketcap.com -c1"
     },
 
+     "custom/cpu": {
+        "exec": "~/.config/waybar/scripts/cpu_graphical.py 0.1 2",
+        "format": " {}",
+        "tooltip": true,
+        "return-type": "json",
+        "on-click": "alacritty -e htop"
+    },
+
+
        "custom/hack": {
         "format": "{}",
         "max-length": 40,
@@ -144,5 +176,5 @@
     "return-type": "json",
     "interval": 5,
     "format-icons": ["",""]
- } 
+  }
 }

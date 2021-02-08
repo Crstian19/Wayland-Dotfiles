@@ -97,3 +97,7 @@ exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 # exec --no-startup-id /usr/local/bin/alternating_layouts.py
 exec /usr/local/bin/rice.py
 exec autotiling
+
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
+exec hash dbus-update-activation-environment 2>/dev/null && \
+     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
