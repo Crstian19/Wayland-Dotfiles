@@ -3,7 +3,7 @@
 #
 
 super + Return
-	alacritty
+	footclient
 
 super + space
 	wofi

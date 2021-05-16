@@ -13,7 +13,7 @@ input * xkb_variant "intl"
 
 # Programs
 bindsym $mod+Escape exit
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec footclient
 bindsym $mod+d exec nautilus -w
 bindsym $mod+Space exec wofi
 bindsym $mod+l exec swaylock -c 000000
@@ -94,9 +94,10 @@ bar {
 exec mako
 # exec --no-startup-id /usr/local/bin/alternating_layouts.py
 exec autotiling
+exec foot --server
 exec python ~/.config/sway/rice.py
 exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
 exec hash dbus-update-activation-environment 2>/dev/null && \
      dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec foot --server
+
