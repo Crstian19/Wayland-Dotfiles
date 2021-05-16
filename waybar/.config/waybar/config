@@ -1,10 +1,10 @@
-\{
+{
     "layer": "top", 
     "position": "bottom",
     "height": 20, 
-    "modules-left": [ "disk", "memory", "cpu", "sway/mode", "temperature#cpu", "temperature#gpu" ],
+    "modules-left": [ "disk", "memory", "cpu", "custom/cpu", "sway/mode", "temperature#cpu", "temperature#gpu", "temperature#nvme", "custom/paru" ],
     "modules-center": ["sway/workspaces"],
-    "modules-right": [ "custom/hack","custom/mediaplayer", "custom/airquality", "custom/ping", "pulseaudio", "network", "clock", "tray" ],
+    "modules-right": [ "custom/crypto","custom/media","custom/weather", "custom/ping", "pulseaudio", "network", "clock", "tray" ],
 
      "sway/workspaces": {
          "disable-scroll": false,
@@ -27,7 +27,8 @@
         "spacing": 5
     },
     "clock": {
-	"format": " {:%a %d %b %H:%M}"
+	"format": " {:%a %d %b %H:%M}",
+	"tooltip-format": "<tt>{calendar}</tt>"
     },
     "cpu": {
         "interval": 1,
@@ -51,9 +52,11 @@
     },
     "pulseaudio": {
         "scroll-step": 5,
-        "format": "{icon} {volume}%",
-        "format-bluetooth": "{volume}% {icon}",
-        "format-muted": " Muted",
+        "format": "{format_source}  {icon} {volume}%",
+        "format-bluetooth": "{format_source}  {icon} {volume}%",
+        "format-muted": "{format_source}   Muted",        
+        "format-source": "",
+        "format-source-muted": "",
         "format-icons": {
             "headphones": "",
             "handsfree": "",
@@ -64,22 +67,33 @@
             "default": ["", ""]
         },
         "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+        
     },
 
     "temperature#cpu": {
-	"hwmon-path": "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon0/temp1_input",
+	"hwmon-path-abs": "/sys/devices/platform/nct6775.656/hwmon/",
 	"critical-threshold": 80,
-    "format-critical": "CPU  {temperatureC}°C",
+	"input-filename": "temp2_input",
+        "format-critical": "CPU  {temperatureC}°C",
 	"format": "CPU  {temperatureC}°C"
     },
 
     "temperature#gpu": {
 	"hwmon-path-abs": "/sys/class/drm/card0/device/hwmon",
-	"critical-threshold": 80,
-    "input-filename": "temp1_input",
-    "format-critical": "GPU  {temperatureC}°C",
+        "critical-threshold": 80,
+        "input-filename": "temp1_input",
+        "format-critical": "GPU  {temperatureC}°C",
 	"format": "GPU  {temperatureC}°C"
     },
+
+     "temperature#nvme": {
+        "hwmon-path-abs": "/sys/class/nvme/nvme0/device/hwmon/",
+        "input-filename": "temp1_input",
+        "critical-threshold": 80,
+    "format-critical": "NVME  {temperatureC}°C",
+        "format": "NVME  {temperatureC}°C"
+    },
+
      "custom/mediaplayer": {
         "format": "{}",
         "max-length": 40,
@@ -89,6 +103,29 @@
         "on-click-middle": "playerctl previous",
         "on-click-right": "playerctl next",
         "interval": 5
+    },
+     "custom/paru": {
+        "format": " {}",
+        "interval": 3600,                     
+        "exec": "paru -Qu | wc -l",
+        "exec-if": "exit 0",
+        "on-click": "alacritty -e 'paru'; pkill -SIGRTMIN+8 waybar",
+        "signal": 8
+    },
+
+        "custom/media": {
+        "format": "<span color=\"#1DB954\">{icon}</span> {}",
+        "return-type": "json",
+        "max-length": 50,
+        "format-icons": {
+            "spotify": "",
+            "default": "🎜"
+        },
+        "escape": true,
+        "on-click-middle": "playerctl -p spotify play-pause",
+        "on-click": "playerctl -p spotify previous",
+        "on-click-right": "playerctl -p spotify next",
+         "exec": "$HOME/.config/waybar/scripts/mediaplayer.py --player spotify 2> /dev/null"
     },
 
     "custom/ping": {
@@ -104,10 +141,30 @@
         "exec": "~/.config/waybar/scripts/info-airqualityindex.sh",
         "interval": 5,
         "escape": true
-
-
-   
     },
+    "custom/weather": {
+        "format": "{}",
+        "tooltip": true,
+        "exec": "~/.config/waybar/scripts/waybar-wttr.py",
+        "interval": 3600,
+        "return-type": "json"
+    },
+    "custom/crypto": {
+    "format": "{}",
+    "interval": 600,
+    "return-type": "json",
+    "exec": "~/.config/waybar/scripts/crypto.py",
+    "exec-if": "ping pro-api.coinmarketcap.com -c1"
+    },
+
+     "custom/cpu": {
+        "exec": "~/.config/waybar/scripts/cpu_graphical.py 0.1 2",
+        "format": " {}",
+        "tooltip": true,
+        "return-type": "json",
+        "on-click": "alacritty -e htop"
+    },
+
 
        "custom/hack": {
         "format": "{}",
@@ -123,5 +180,5 @@
     "return-type": "json",
     "interval": 5,
     "format-icons": ["",""]
- } 
+  }
 }
