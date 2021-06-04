@@ -1,3 +1,5 @@
+#eval "$(starship init zsh)"
+
 export SSH_AUTH_SOCK=/run/user/1000/ssh-agent.socket
 
 # Automatically start sway
@@ -13,7 +15,7 @@ if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
   exec sway -D noatomic
 fi
 
-neofetch | lolcat
+freshfetch | lolcat
 alias ssh="TERM=xterm-256color ssh"
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
@@ -22,3 +24,4 @@ alias server="ssh server.lan"
 alias ls="exa"
 alias lt="exa --tree"
 alias la="exa -la"
+
