@@ -16,7 +16,7 @@ bindsym $mod+Escape exit
 bindsym $mod+Return exec footclient
 bindsym $mod+d exec nautilus -w
 bindsym $mod+Space exec wofi
-bindsym $mod+l exec swaylock -c 000000
+bindsym $mod+l exec swaylock --screenshots --clock --indicator --indicator-radius 100 --indicator-thickness 7 --effect-blur 7x5 --effect-vignette 0.5:0.5 --ring-color bb00cc --key-hl-color 0af04f --line-color 00000000 --inside-color 00000088 --separator-color 00000000 --grace 2 --fade-in 0.2
 # bindsym --release Print exec grim -g \"$(slurp)" - | wl-copy
 # bindsym Print exec maim -s --hidecursor | xclip -selection clipboard -t image/png
 bindsym --release Print exec grim -g "$(slurp)" - | swappy -f -
