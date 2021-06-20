@@ -15,13 +15,30 @@ if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
   exec sway -D noatomic
 fi
 
+# Fetch & lolcat
 freshfetch | lolcat
+
+# Simulate xterm via ssh
 alias ssh="TERM=xterm-256color ssh"
+
+# Autosuggestions
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
+# Paru: Pacman Helper
 alias yay="paru"
+
+# Server SSH shortcut
 alias server="ssh server.lan"
+
+# exa: A modern replacement for ls
 alias ls="exa"
 alias lt="exa --tree"
 alias la="exa -la"
+
+# bat: a cat clone with wings
+alias cat="bat"
+
+# rsync: Not cp anymore
+alias cp="rsync -a --info=progress2"
+
 
